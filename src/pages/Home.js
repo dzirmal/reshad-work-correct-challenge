@@ -6,15 +6,16 @@ import React, { useContext, useEffect, useState } from 'react'
 // import { getPeople } from '../../helpers/actions/actionTypes/getData/getPeople'
 // import { GlobalContext } from '../../helpers/Provider'
 import {
-  Br,
+  DashedImg,
   HomeContainer,
   HomeContents,
   HomeLower,
-  HomeTitle,
   HomeUpper,
-  Image,
+  Logo,
+  SpinnerImg,
 } from './Home.elements'
-import LOGO from './../Assets/LOGO.svg'
+
+import { LoadingSpinner, Movie, MovieList } from '../components'
 
 function Home() {
   // const [showModal, setShowModal] = useState(false)
@@ -40,13 +41,18 @@ function Home() {
   return (
     <>
       <HomeContainer>
-        <HomeTitle>
-          <Image src={LOGO} alt='' />
-        </HomeTitle>
+        <Logo src='Assets/LOGO.svg' alt='' />
+
         <HomeContents>
-          <HomeUpper>Upper</HomeUpper>
-          <Br />
-          <HomeLower>Lower</HomeLower>
+          <MovieList />
+        </HomeContents>
+      </HomeContainer>
+      <DashedImg src='Assets/Dash.svg' />
+      <HomeContainer>
+        <HomeContents>
+          <HomeLower>
+            <Movie />
+          </HomeLower>
         </HomeContents>
       </HomeContainer>
     </>

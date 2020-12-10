@@ -1,26 +1,17 @@
 import styled from 'styled-components'
 
 export const HomeContainer = styled.div`
-  background-color: rgb(234, 237, 237);
   width: 100%;
   max-width: 1200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 20px auto;
-  /* background: #e0e6ee; */
 `
 
-export const Image = styled.img`
+export const Logo = styled.img`
   background-color: none;
-  padding: 0;
-  margin: 0;
-`
-
-export const HomeTitle = styled.h1`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
+  margin: 20px 0;
 `
 
 export const HomeContents = styled.div`
@@ -36,10 +27,23 @@ export const HomeContents = styled.div`
   }
 `
 
-export const HomeUpper = styled.div``
+export const HomeUpper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  width: 100%;
+`
 
-export const Br = styled.hr`
-  border: 2px dashed #ffffff;
+export const SpinnerImg = styled.img`
+  width: 100px;
+  height: 100px;
+`
+
+export const DashedImg = styled.img`
+  width: 100%;
+  margin: 20px 0;
 `
 
 export const HomeLower = styled.div``

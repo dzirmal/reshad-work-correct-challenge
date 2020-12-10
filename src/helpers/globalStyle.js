@@ -6,8 +6,12 @@ const GlobalStyle = createGlobalStyle`
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
-  background: #E0E6EE;
 }
+
+html, body {
+  background-color: #E0E6EE;
+}
+
 `
 
 export const Button = styled.button`

@@ -28,6 +28,7 @@ export const MovieHeaderTitle = styled.span`
 `
 
 export const MovieHeaderButton = styled.button`
+  cursor: pointer;
   background-color: #ffffff;
   border: none;
   outline: none;

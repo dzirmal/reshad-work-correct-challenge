@@ -16,7 +16,7 @@ function Planet({
     <>
       <PlanetContainer>
         <span>This is a planet component</span>
-        <div key={name}>
+        {/* <div key={name}>
           <span>{name}</span>
           <span>{rotation_period}</span>
           <span>{orbital_period}</span>
@@ -24,7 +24,7 @@ function Planet({
           <span>{climate}</span>
           <span>{surface_water}</span>
           <span>{population}</span>
-        </div>
+        </div> */}
       </PlanetContainer>
     </>
   )

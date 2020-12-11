@@ -1,4 +1,7 @@
 export { default as Movie } from './Movie/Movie'
+export { default as MovieHeader } from './MovieHeader/MovieHeader'
 export { default as MovieCategory } from './MovieCategory/MovieCategory'
 export { default as LoadingSpinner } from './LoadingSpinner/LoadingSpinner'
 export { default as MovieList } from './MovieList/MovieList'
+export { default as AddMovie } from './AddMovie/AddMovie'
+export { default as Planet } from './Planet/Planet'

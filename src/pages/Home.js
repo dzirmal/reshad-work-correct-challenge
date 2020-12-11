@@ -1,43 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react'
-// import { useHistory } from 'react-router-dom'
-// import { Favorites, Modal, Row } from '../../components'
-// import { getPlanets } from '../../helpers/actions/actionTypes/getData/getPlanets'
-// import { getFilms } from '../../helpers/actions/actionTypes/getData/getFilms'
-// import { getPeople } from '../../helpers/actions/actionTypes/getData/getPeople'
-// import { GlobalContext } from '../../helpers/Provider'
+import React from 'react'
+
 import {
   DashedImg,
   HomeContainer,
   HomeContents,
   HomeLower,
-  HomeUpper,
   Logo,
-  SpinnerImg,
 } from './Home.elements'
 
-import { LoadingSpinner, Movie, MovieList } from '../components'
+import { AddMovie, MovieList } from '../components'
 
 function Home() {
-  // const [showModal, setShowModal] = useState(false)
-  // const openModal = () => {
-  //   setShowModal(true)
-  // }
-
-  // const {
-  //   planetsDispatch,
-  //   planetsState,
-  //   filmsDispatch,
-  //   filmsState,
-  //   peopleDispatch,
-  //   peopleState,
-  // } = useContext(GlobalContext)
-  // const history = useHistory()
-
-  // useEffect(() => {
-  //   getPlanets(history)(planetsDispatch)
-  //   getFilms(history)(filmsDispatch)
-  //   getPeople(history)(peopleDispatch)
-  // }, [])
   return (
     <>
       <HomeContainer>
@@ -51,7 +24,7 @@ function Home() {
       <HomeContainer>
         <HomeContents>
           <HomeLower>
-            <Movie />
+            <AddMovie />
           </HomeLower>
         </HomeContents>
       </HomeContainer>

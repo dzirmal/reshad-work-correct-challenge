@@ -14,7 +14,7 @@ export const getPlanets = (history) => (dispatch) => {
     .then((response) => {
       dispatch({ type: PLANETS_LOAD_SUCCESS, payload: response.data.results })
 
-      console.log('response.data.results', response.data.results)
+      // console.log('response.data.results', response.data.results)
     })
     .catch((error) => {
       dispatch({

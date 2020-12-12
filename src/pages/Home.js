@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 
 import {
   DashedImg,
@@ -9,8 +9,18 @@ import {
 } from './Home.elements'
 
 import { AddMovie, MovieList } from '../components'
+import { GlobalContext } from '../helpers/Provider'
+import { useHistory } from 'react-router-dom'
+import { getMovies } from '../helpers/actions/actionsTypes/getData/getMovis'
 
 function Home() {
+  const { moviesDispatch } = useContext(GlobalContext)
+  const history = useHistory()
+
+  useEffect(() => {
+    getMovies(history)(moviesDispatch)
+  }, [])
+
   return (
     <>
       <HomeContainer>

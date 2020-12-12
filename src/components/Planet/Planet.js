@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { GlobalContext } from '../../helpers/Provider'
 import { PlanetContainer } from './Planet.elements'
 
 function Planet({
@@ -12,11 +13,25 @@ function Planet({
     population,
   },
 }) {
+  // const { moviesState, moviesDispatch } = useContext(GlobalContext)
+
+  // const loading = moviesState.movies.loading
+
+  // console.log('loading', loading)
+
+  // const history = useHistory()
+
+  // useEffect(() => {
+  //   getMovies(history)(moviesDispatch)
+  // }, [])
+
   return (
     <>
+      {' '}
+      {/* {loading && data.length === 0 && <LoadingSpinner big />} */}
       <PlanetContainer>
-        <span>This is a planet component</span>
-        {/* <div key={name}>
+        <span>{name}</span>
+        {/* <div>
           <span>{name}</span>
           <span>{rotation_period}</span>
           <span>{orbital_period}</span>

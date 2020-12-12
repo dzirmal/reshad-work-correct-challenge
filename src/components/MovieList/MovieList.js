@@ -1,23 +1,24 @@
-import React, { useContext, useEffect } from 'react'
-import { Movie } from '..'
+import React, { useContext } from 'react'
+import { LoadingSpinner, Movie } from '..'
 import { MovieListContainer } from './MovieList.elements'
-
-import { useHistory } from 'react-router-dom'
-import { getMovies } from '../../helpers/actions/actionsTypes/getData/getMovis'
 import { GlobalContext } from '../../helpers/Provider'
 
 function MovieList() {
-  const { moviesDispatch, moviesState } = useContext(GlobalContext)
-  const history = useHistory()
+  const { moviesState } = useContext(GlobalContext)
 
-  useEffect(() => {
-    getMovies(history)(moviesDispatch)
-  }, [])
+  const movies = moviesState.movies.data
+  const loading = moviesState.movies.loading
 
   return (
-    <MovieListContainer>
-      <Movie moviesState={moviesState} />
-    </MovieListContainer>
+    <>
+      <MovieListContainer>
+        {loading === true && <LoadingSpinner big />}
+
+        {movies.map((movie) => (
+          <Movie key={movie.episode_id} movie={movie} />
+        ))}
+      </MovieListContainer>
+    </>
   )
 }
 

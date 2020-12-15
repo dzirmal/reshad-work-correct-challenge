@@ -3,15 +3,16 @@ import { GlobalContext } from '../../helpers/Provider'
 import { PlanetContainer } from './Planet.elements'
 
 function Planet({
-  planet: {
-    name,
-    rotation_period,
-    orbital_period,
-    diameter,
-    climate,
-    surface_water,
-    population,
-  },
+  moviesPlanets,
+  // : {
+  //   name,
+  //   rotation_period,
+  //   orbital_period,
+  //   diameter,
+  //   climate,
+  //   surface_water,
+  //   population,
+  // },
 }) {
   // const { moviesState, moviesDispatch } = useContext(GlobalContext)
 
@@ -25,12 +26,14 @@ function Planet({
   //   getMovies(history)(moviesDispatch)
   // }, [])
 
+  // console.log('moviesPlanets:', moviesPlanets)
+
   return (
     <>
       {' '}
       {/* {loading && data.length === 0 && <LoadingSpinner big />} */}
       <PlanetContainer>
-        <span>{name}</span>
+        <span>this is the planet name</span>
         {/* <div>
           <span>{name}</span>
           <span>{rotation_period}</span>

@@ -4,28 +4,33 @@ import { GlobalContext } from '../../helpers/Provider'
 import { getPlanets } from '../../helpers/actions/actionsTypes/getData/getPlanets'
 import { PlanetsListContainer } from './PlanetsList.elements'
 import { LoadingSpinner, Planet } from '..'
+import axiosInstance from '../../helpers/axios/axios'
 
 function PlanetsList() {
-  const { planetsState, moviesState } = useContext(GlobalContext)
-
-  const moviesPlanets = moviesState.movies.data.map((planet) =>
-    planet.planets.map((el) => el.name)
+  const { planetsState, moviesState, planetsDispatch } = useContext(
+    GlobalContext
   )
+  const history = useHistory()
 
-  // const moviesPlanetsName = planetsState.planets.data.map(
-  //   (planet) => planet.name
-  // )
+  const moviesPlanets = () => {
+    moviesState.movies.data.map((planet) =>
+      planet.planets.map((planetUrl) =>
+        axiosInstance
+          .get(planetUrl)
+          .then((response) => console.log('response.data.name', response.data))
+      )
+    )
+  }
 
-  const moviesPlanetsUrl = planetsState.planets.data.map((planet) => planet.url)
-
-  console.log('moviesPlanets:', moviesPlanets)
-  // console.log('moviesPlanetsName:', moviesPlanetsName)
-  console.log('moviesPlanetsUrl:', moviesPlanetsUrl)
+  useEffect(() => {
+    moviesPlanets()
+  }, [])
 
   return (
     <PlanetsListContainer>
       {/* {loading === true && <LoadingSpinner />} */}
       <div>This is a list of movies' planets</div>
+      <Planet moviesPlanets={moviesPlanets} />
     </PlanetsListContainer>
   )
 }

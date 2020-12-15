@@ -24,3 +24,12 @@ export const getPlanets = (history) => (dispatch) => {
       // console.log('error', error)
     })
 }
+
+// const moviesPlanets = moviesState.movies.data.map((planet) =>
+// planet.planets.map(
+//   async (planetUrl) =>
+//     await axiosInstance
+//       .get(planetUrl)
+//       .then((response) => console.log('response', response))
+// )
+// )

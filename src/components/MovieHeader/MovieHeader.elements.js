@@ -16,14 +16,12 @@ export const MovieHeaderTitle = styled.span`
   font-family: Barlow;
   font-style: normal;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
   background-color: #ffffff;
   line-height: 19px;
-  /* identical to box height */
   display: flex;
   justify-content: center;
   align-items: center;
-
   color: #00687f;
 `
 

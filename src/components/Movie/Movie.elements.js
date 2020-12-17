@@ -39,3 +39,33 @@ export const MovieBodyContent = styled.div`
   justify-content: center;
   align-items: center;
 `
+
+export const ArrowsDiv = styled.button`
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+  border: none;
+  background-color: #ffffff;
+  outline: none;
+  color: #000;
+`
+
+export const ArrowUp = styled.span`
+  display: flex;
+  cursor: pointer;
+  font-size: 12px;
+  margin-bottom: -1.5px;
+  &:hover {
+    color: #00687f;
+  }
+`
+
+export const ArrowDown = styled.span`
+  display: flex;
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: -1.5px;
+  &:hover {
+    color: #00687f;
+  }
+`

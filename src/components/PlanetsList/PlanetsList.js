@@ -5,7 +5,7 @@ import { LoadingSpinner, Planet } from '..'
 const PlanetsList = ({ allPlanets }) => {
   const [loading, setLoading] = useState(true)
 
-  console.log('loading:', loading)
+  console.log('allPlanets:', allPlanets)
 
   return (
     <>

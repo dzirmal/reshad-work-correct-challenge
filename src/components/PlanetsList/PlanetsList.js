@@ -1,37 +1,21 @@
-import React, { useContext, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
-import { GlobalContext } from '../../helpers/Provider'
-import { getPlanets } from '../../helpers/actions/actionsTypes/getData/getPlanets'
+import React, { useState } from 'react'
 import { PlanetsListContainer } from './PlanetsList.elements'
 import { LoadingSpinner, Planet } from '..'
-import axiosInstance from '../../helpers/axios/axios'
 
-function PlanetsList() {
-  const { planetsState, moviesState, planetsDispatch } = useContext(
-    GlobalContext
-  )
-  const history = useHistory()
+const PlanetsList = ({ allPlanets }) => {
+  const [loading, setLoading] = useState(true)
 
-  const moviesPlanets = () => {
-    moviesState.movies.data.map((planet) =>
-      planet.planets.map((planetUrl) =>
-        axiosInstance
-          .get(planetUrl)
-          .then((response) => console.log('response.data.name', response.data))
-      )
-    )
-  }
-
-  useEffect(() => {
-    moviesPlanets()
-  }, [])
+  console.log('loading:', loading)
 
   return (
-    <PlanetsListContainer>
-      {/* {loading === true && <LoadingSpinner />} */}
-      <div>This is a list of movies' planets</div>
-      <Planet moviesPlanets={moviesPlanets} />
-    </PlanetsListContainer>
+    <>
+      <PlanetsListContainer>
+        {loading && allPlanets.length === 0 && <LoadingSpinner />}
+        {allPlanets.map((planet, i) => (
+          <Planet key={i} planet={planet} />
+        ))}
+      </PlanetsListContainer>
+    </>
   )
 }
 

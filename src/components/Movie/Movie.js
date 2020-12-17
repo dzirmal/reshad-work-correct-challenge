@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { MovieCategory, MovieHeader, PlanetsList } from '..'
+import { LoadingSpinner, MovieCategory, MovieHeader, PlanetsList } from '..'
 import { getPlanets } from '../../helpers/actions/actionsTypes/getData/getPlanets'
 import { GlobalContext } from '../../helpers/Provider'
 import {
@@ -12,20 +12,50 @@ import {
   MovieHeaderButton,
 } from './Movie.elements'
 
+import axios from 'axios'
+
 function Movie({ movie }) {
-  const { planetsDispatch } = useContext(GlobalContext)
+  // const { planetsDispatch } = useContext(GlobalContext)
   const [open, setOpen] = useState(false)
+  const [allPlanets, setAllPlanets] = useState([])
+  // const [loading, setLoading] = useState(true)
 
   const history = useHistory()
 
+  const moviesPlanets = () => {
+    // setLoading(true)
+    // console.log('loading:', loading)
+
+    movie.planets.map((planetUrl) => {
+      // setLoading(true)
+      // console.log('loading:', loading)
+
+      return axios
+        .get(planetUrl)
+        .then((response) =>
+          setAllPlanets((previousPlanets) => [
+            ...previousPlanets,
+            response.data,
+          ])
+        )
+    })
+    // setLoading(false)
+  }
+
   useEffect(() => {
-    getPlanets(history)(planetsDispatch)
+    if (open && allPlanets.length === 0) {
+      moviesPlanets()
+    }
   }, [open])
+
+  // useEffect(() => {
+  //   getPlanets(history)(planetsDispatch)
+  // }, [open])
+
+  // console.log('loading:', loading)
 
   return (
     <>
-      {/* {loading && data.length === 0 && <LoadingSpinner big />} */}
-
       {movie && (
         <MovieContainer>
           <MovieHeader title={movie.title} open={open} setOpen={setOpen} />
@@ -43,7 +73,16 @@ function Movie({ movie }) {
               </MovieBodyHeader>
 
               <MovieBodyContent>
-                <PlanetsList />
+                {/* {loading ? ( */}
+                {/* <LoadingSpinner />
+                ) : ( */}
+                <PlanetsList
+                  movieId={movie.episode_id}
+                  movie={movie}
+                  allPlanets={allPlanets}
+                  setAllPlanets={setAllPlanets}
+                />
+                {/* )} */}
               </MovieBodyContent>
             </MovieBody>
           )}

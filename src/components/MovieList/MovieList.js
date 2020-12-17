@@ -9,6 +9,8 @@ function MovieList() {
   const movies = moviesState.movies.data
   const loading = moviesState.movies.loading
 
+  // console.log('loading:', loading)
+
   return (
     <>
       <MovieListContainer>

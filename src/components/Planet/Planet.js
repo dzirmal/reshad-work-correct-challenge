@@ -1,48 +1,40 @@
-import React, { useContext } from 'react'
-import { GlobalContext } from '../../helpers/Provider'
-import { PlanetContainer } from './Planet.elements'
+import React from 'react'
+
+import {
+  PlanetClimate,
+  PlanetContainer,
+  PlanetContent,
+  PlanetDimeter,
+  PlanetName,
+  PlanetOrbitalPeriod,
+  PlanetPopulation,
+  PlanetRotationPeriod,
+  PlanetSurfaceWater,
+} from './Planet.elements'
 
 function Planet({
-  moviesPlanets,
-  // : {
-  //   name,
-  //   rotation_period,
-  //   orbital_period,
-  //   diameter,
-  //   climate,
-  //   surface_water,
-  //   population,
-  // },
+  planet: {
+    name,
+    rotation_period,
+    orbital_period,
+    diameter,
+    climate,
+    surface_water,
+    population,
+  },
 }) {
-  // const { moviesState, moviesDispatch } = useContext(GlobalContext)
-
-  // const loading = moviesState.movies.loading
-
-  // console.log('loading', loading)
-
-  // const history = useHistory()
-
-  // useEffect(() => {
-  //   getMovies(history)(moviesDispatch)
-  // }, [])
-
-  // console.log('moviesPlanets:', moviesPlanets)
-
   return (
     <>
-      {' '}
-      {/* {loading && data.length === 0 && <LoadingSpinner big />} */}
       <PlanetContainer>
-        <span>this is the planet name</span>
-        {/* <div>
-          <span>{name}</span>
-          <span>{rotation_period}</span>
-          <span>{orbital_period}</span>
-          <span>{diameter}</span>
-          <span>{climate}</span>
-          <span>{surface_water}</span>
-          <span>{population}</span>
-        </div> */}
+        <PlanetContent>
+          <PlanetName>{name}</PlanetName>
+          <PlanetRotationPeriod>{rotation_period}</PlanetRotationPeriod>
+          <PlanetOrbitalPeriod>{orbital_period}</PlanetOrbitalPeriod>
+          <PlanetDimeter>{diameter}</PlanetDimeter>
+          <PlanetClimate>{climate}</PlanetClimate>
+          <PlanetSurfaceWater>{surface_water}</PlanetSurfaceWater>
+          <PlanetPopulation>{population}</PlanetPopulation>
+        </PlanetContent>
       </PlanetContainer>
     </>
   )

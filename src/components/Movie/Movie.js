@@ -24,7 +24,6 @@ import {
 function Movie({ movie }) {
   const [open, setOpen] = useState(false)
   const [allPlanets, setAllPlanets] = useState([])
-  const [PlanetsNames, setPlanetsNames] = useState([])
 
   const getMoviePlanets = () => {
     movie.planets.map((planetUrl) => {
@@ -34,20 +33,16 @@ function Movie({ movie }) {
     })
   }
 
-  // console.log('PlanetsNames:', PlanetsNames)
-
   useEffect(() => {
     if (open && allPlanets.length === 0) {
       getMoviePlanets()
     }
   }, [open])
 
-  // console.log('allPlanets:', allPlanets)
-
   const ascendingByName = () => {
     const ascending = allPlanets.sort((a, b) => {
-      const aName = a.name.toLowerCase()
-      const bName = b.name.toLowerCase()
+      const aName = a.name
+      const bName = b.name
       if (aName < bName) return -1
       if (aName > bName) return 1
       return 0
@@ -58,16 +53,12 @@ function Movie({ movie }) {
 
   const descendingByName = () => {
     const descending = allPlanets.sort((a, b) => {
-      console.log('a.name', a.name)
-      console.log('b.name', b.name)
-      const aName = a.name.toLowerCase()
-      const bName = b.name.toLowerCase()
+      const aName = a.name
+      const bName = b.name
       if (aName > bName) return -1
       if (aName < bName) return 1
       return 0
     })
-    console.log('descending:', descending)
-
     setAllPlanets((previousPlanets) => [...previousPlanets, descending])
   }
 
@@ -105,66 +96,73 @@ function Movie({ movie }) {
   }
 
   const descendingByDiameter = () => {
-    console.log('sortingDecreasing was clicked')
     const descending = allPlanets.sort((a, b) => b.diameter - a.diameter)
     setAllPlanets((previousPlanets) => [...previousPlanets, descending])
   }
 
   const ascendingByClimate = () => {
     const ascending = allPlanets.sort((a, b) => {
-      const aName = a.climate.toLowerCase()
-      const bName = b.climate.toLowerCase()
-
-      console.log('a.climate', a.climate)
-      console.log('b.climate', b.climate)
-
-      if (aName < bName) return -1
-      if (aName > bName) return 1
+      const aClimate = a.climate
+      const bClimate = b.climate
+      if (aClimate < bClimate) return -1
+      if (aClimate > bClimate) return 1
       return 0
     })
-
     setAllPlanets((previousPlanets) => [...previousPlanets, ascending])
   }
 
   const descendingByClimate = () => {
     const descending = allPlanets.sort((a, b) => {
-      console.log('a.climate', a.climate)
-      console.log('b.climate', b.climate)
-      const aName = a.climate.toLowerCase()
-      const bName = b.climate.toLowerCase()
-
-      console.log('a.climate', a.climate)
-      console.log('b.climate', b.climate)
-
-      if (aName > bName) return -1
-      if (aName < bName) return 1
+      const aClimate = a.climate
+      const bCaClimate = b.climate
+      if (aClimate > bCaClimate) return -1
+      if (aClimate < bCaClimate) return 1
       return 0
     })
     setAllPlanets((previousPlanets) => [...previousPlanets, descending])
-    console.log('allPlanets:', allPlanets)
   }
 
   const ascendingBySurfaceWater = () => {
-    const ascending = allPlanets.sort(
-      (a, b) => a.surface_water - b.surface_water
-    )
+    const ascending = allPlanets.sort((a, b) => {
+      if (isNaN(a.surface_water)) {
+        return 1 - isNaN(b.surface_water)
+      } else {
+        return a.surface_water - b.surface_water
+      }
+    })
     setAllPlanets((previousPlanets) => [...previousPlanets, ascending])
   }
 
   const descendingBySurfaceWater = () => {
-    const descending = allPlanets.sort(
-      (a, b) => b.surface_water - a.surface_water
-    )
+    const descending = allPlanets.sort((a, b) => {
+      if (isNaN(a.surface_water)) {
+        return 1 - isNaN(b.surface_water)
+      } else {
+        return b.surface_water - a.surface_water
+      }
+    })
     setAllPlanets((previousPlanets) => [...previousPlanets, descending])
   }
 
   const ascendingByPopulation = () => {
-    const ascending = allPlanets.sort((a, b) => a.population - b.population)
+    const ascending = allPlanets.sort((a, b) => {
+      if (isNaN(a.population)) {
+        return 1 - isNaN(b.population)
+      } else {
+        return a.population - b.population
+      }
+    })
     setAllPlanets((previousPlanets) => [...previousPlanets, ascending])
   }
 
   const descendingByPopulation = () => {
-    const descending = allPlanets.sort((a, b) => b.population - a.population)
+    const descending = allPlanets.sort((a, b) => {
+      if (isNaN(a.population)) {
+        return 1 - isNaN(b.population)
+      } else {
+        return b.population - a.population
+      }
+    })
     setAllPlanets((previousPlanets) => [...previousPlanets, descending])
   }
 

@@ -9,7 +9,8 @@ function MovieList() {
   const movies = moviesState.movies.data
   const loading = moviesState.movies.loading
 
-  // console.log('loading:', loading)
+  console.log('moviesState:', moviesState)
+  console.log('bbbbbbbbbbccccccccccccccccccccccbmovies:', movies)
 
   return (
     <>

@@ -13,3 +13,6 @@ export const SEARCH_PLANETS = 'SEARCH_PLANETS'
 
 // Errors
 export const CONNECTION_ERROR = 'CONNECTION_ERROR'
+
+// Add Movie
+export const ADD_MOVIE = 'ADD_MOVIE'

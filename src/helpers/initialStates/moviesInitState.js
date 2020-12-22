@@ -5,9 +5,4 @@ export default {
     error: null,
     data: [],
   },
-
-  addMovie: {
-    loading: false,
-    error: null,
-  },
 }

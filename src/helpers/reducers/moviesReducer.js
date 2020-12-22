@@ -1,4 +1,5 @@
 import {
+  ADD_MOVIE,
   MOVIES_LOADING,
   MOVIES_LOAD_ERROR,
   MOVIES_LOAD_SUCCESS,
@@ -34,6 +35,20 @@ const movies = (state, { payload, type }) => {
           ...state.movies,
           loading: false,
           error: payload,
+        },
+      }
+    }
+
+    case ADD_MOVIE: {
+      // console.log('...state', ...state)
+      // console.log('movies', movies)
+      return {
+        ...state,
+        movies: {
+          ...state.movies,
+          loading: false,
+          // data: payload,
+          data: [...state.movies.data, payload],
         },
       }
     }

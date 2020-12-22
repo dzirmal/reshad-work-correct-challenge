@@ -76,6 +76,14 @@ export const SearchImage = styled.img`
 
 export const ButtonDiv = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  /* justify-content: flex-end; */
   margin-top: 20px;
+`
+
+export const MyMoviesPlanets = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px;
 `

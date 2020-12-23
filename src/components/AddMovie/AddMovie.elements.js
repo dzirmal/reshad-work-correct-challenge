@@ -72,18 +72,43 @@ export const SearchInput = styled.input`
 export const SearchImage = styled.img`
   width: 20px;
   margin-left: 10px;
+  cursor: pointer;
 `
 
 export const ButtonDiv = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   /* justify-content: flex-end; */
   margin-top: 20px;
 `
 
 export const MyMoviesPlanets = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
   margin: 10px;
+`
+
+export const SearchedPlanetsContainer = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 1px solid #e5e5e5;
+  background-color: #ffffff;
+  box-shadow: 0 4px 4px rgba(196, 196, 196, 0.5);
+  padding: 10px;
+  z-index: 10;
+`
+
+export const SearchedPlanetName = styled.span`
+  font-family: Barlow;
+  font-size: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #555555;
+  margin: 5px;
+  cursor: pointer;
 `

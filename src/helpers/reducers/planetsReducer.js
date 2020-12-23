@@ -40,29 +40,23 @@ const planets = (state, { payload, type }) => {
     }
 
     case SEARCH_PLANETS: {
-      const searchValue = payload?.toLowerCase()
-
-      console.log(' payload.toLowerCase():', payload?.toLowerCase())
-
       return {
         planets: {
           ...state.planets,
           loading: false,
           isSearchActive: !!payload?.length > 0 || false,
           foundPlanets: state.planets.data.filter((item) => {
+            console.log(item)
             return (
-              item.name.toLowerCase().search(searchValue) !== -1 ||
-              item.climate.toLowerCase().search(searchValue) !== -1 ||
-              item.created.toLowerCase().search(searchValue) !== -1 ||
-              item.edited.toLowerCase().search(searchValue) !== -1 ||
-              item.films.toLowerCase().search(searchValue) !== -1 ||
-              item.orbital_period.toLowerCase().search(searchValue) !== -1 ||
-              item.population.toLowerCase().search(searchValue) !== -1 ||
-              item.residents.toLowerCase().search(searchValue) !== -1 ||
-              item.rotation_period.toLowerCase().search(searchValue) !== -1 ||
-              item.surface_water.toLowerCase().search(searchValue) !== -1 ||
-              item.terrain.toLowerCase().search(searchValue) !== -1 ||
-              item.url.toLowerCase().search(searchValue) !== -1
+              item.name.search(payload) !== -1 ||
+              item.climate.search(payload) !== -1 ||
+              item.created.search(payload) !== -1 ||
+              item.edited.search(payload) !== -1 ||
+              item.population.search(payload) !== -1 ||
+              item.rotation_period.search(payload) !== -1 ||
+              item.surface_water.search(payload) !== -1 ||
+              item.terrain.search(payload) !== -1 ||
+              item.url.search(payload) !== -1
             )
           }),
         },

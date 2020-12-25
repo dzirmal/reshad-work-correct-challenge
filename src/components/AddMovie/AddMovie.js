@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { MovieHeader, MyMoviePlanet } from '..'
 import { Button } from '../../helpers/globalStyle'
 import { GlobalContext } from '../../helpers/Provider'
@@ -20,53 +20,31 @@ import {
 import axios from 'axios'
 
 import { addMovies } from '../../helpers/actions/actionsTypes/addMovie/addMovie'
-import { ADD_MOVIE } from '../../helpers/actions'
-import axiosInstance from '../../helpers/axios/axios'
 import searchPlanets from '../../helpers/actions/actionsTypes/searchData/searchPlanets'
-import { getPlanets } from '../../helpers/actions/actionsTypes/getData/getPlanets'
-import { useHistory } from 'react-router-dom'
 
 function AddMovie() {
-  const { planetsDispatch, moviesDispatch, planetsState } = useContext(
-    GlobalContext
-  )
+  const { planetsDispatch, moviesDispatch } = useContext(GlobalContext)
   const [open, setOpen] = useState(false)
   const [myMoviePlanetsSearch, setMyMoviePlanetsSearch] = useState('')
   const [movieTitle, setMovieTitle] = useState('')
-  const [myMovie, setMyMovie] = useState([
-    {
-      title: '',
-    },
-  ])
+
   const [mySearchedPlanets, setMySearchedPlanets] = useState([])
   const [myMovieSelectedPlanets, setMyMovieSelectedPlanets] = useState([])
-  const history = useHistory()
-  const data = planetsState.planets.data
-  const foundPlanets = planetsState.planets.foundPlanets
-  const loading = planetsState.planets.loading
-  const isSearchActive = planetsState.planets.isSearchActive
-  const currentPlanets = isSearchActive ? foundPlanets : data
-
-  // to insert to the local storage
-  //     localStorage.setItem('words', JSON.stringify(words));
-  //     // convert an array to string
-  //     const arrayString = JSON.stringify(array);
-  //     // convert string to original type
-  //     const array3 = JSON.parse(arrayString);
-  //     console.log(typeof arrayString);
-  //     console.log(Array.isArray(array));
-  //     console.log(Array.isArray(array3));
-  //     // to insert to local storage
-  //     window.localStorage.setItem('people', arrayString);
-  //     let words = [];
-  //     // How to get from local storage
-  //     if (localStorage.words.length > 0) {
-  //       words = JSON.p
+  // const history = useHistory()
+  // const data = planetsState.planets.data
+  // const foundPlanets = planetsState.planets.foundPlanets
+  // const loading = planetsState.planets.loading
+  // const isSearchActive = planetsState.planets.isSearchActive
+  // const currentPlanets = isSearchActive ? foundPlanets : data
 
   const addMyMovie = (e) => {
     e.preventDefault()
-    moviesDispatch(addMovies({ title: movieTitle }))
+    const planetsUrls = []
+    myMovieSelectedPlanets.map((item) => planetsUrls.push(item.url))
+
+    moviesDispatch(addMovies({ title: movieTitle, planets: planetsUrls }))
     setMovieTitle('')
+    setMyMovieSelectedPlanets([])
   }
 
   const searchPlanetByName = (e) => {
@@ -74,7 +52,7 @@ function AddMovie() {
     axios
       .get(`https://swapi.dev/api/planets?search=${e.target.value}`)
       .then((response) => {
-        console.log(response.data.results.map((item) => item.name))
+        // console.log(response.data.results.map((item) => item.name))
         setMySearchedPlanets(response.data.results)
       })
       .catch((error) => console.log(error))
@@ -82,10 +60,8 @@ function AddMovie() {
     searchPlanets(searchText)(planetsDispatch)
   }
 
-  const addPlanetToMovie = (e) => {
-    console.log('addPlanetToMovie was called')
-
-    setMyMovieSelectedPlanets(mySearchedPlanets.filter((planet) => planet.name))
+  const addPlanetToMovie = (planet) => {
+    setMyMovieSelectedPlanets([...myMovieSelectedPlanets, planet])
     setMySearchedPlanets([])
     setMyMoviePlanetsSearch('')
   }
@@ -132,7 +108,9 @@ function AddMovie() {
                 <SearchedPlanetsContainer>
                   {mySearchedPlanets.map((planet, i) => {
                     return (
-                      <SearchedPlanetName onClick={addPlanetToMovie} key={i}>
+                      <SearchedPlanetName
+                        onClick={() => addPlanetToMovie(planet)}
+                        key={i}>
                         {planet.name}
                       </SearchedPlanetName>
                     )

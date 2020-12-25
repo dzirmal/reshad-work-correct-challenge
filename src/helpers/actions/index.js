@@ -16,3 +16,6 @@ export const CONNECTION_ERROR = 'CONNECTION_ERROR'
 
 // Add Movie
 export const ADD_MOVIE = 'ADD_MOVIE'
+
+// Add Planet
+export const ADD_PLANET = 'ADD_PLANET'

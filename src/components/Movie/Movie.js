@@ -24,7 +24,6 @@ import {
 function Movie({ movie }) {
   const [open, setOpen] = useState(false)
   const [allPlanets, setAllPlanets] = useState([])
-
   const getMoviePlanets = () => {
     movie.planets.map((planetUrl) => {
       return axios.get(planetUrl).then((response) => {
@@ -47,7 +46,6 @@ function Movie({ movie }) {
       if (aName > bName) return 1
       return 0
     })
-    console.log('ascending:', ascending)
     setAllPlanets((previousPlanets) => [...previousPlanets, ascending])
   }
 
